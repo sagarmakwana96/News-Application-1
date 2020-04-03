@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		.side_nav{
+			width:140px;
+			background:#e3e3e3;
+			overflow-x: hidden;
+			margin-left: 15%;
+			position: fixed;
+			z-index: 1;
+			border-radius: 4px;
+			border: 0.7px solid #858383;
+			/*left: 10px;*/
+			/*top: 15px;*/
+			/*clear:both;*/
+		}
+		.side_nav button {
+		  border: none;
+		  padding: 15px 20px;
+		  text-align: center;
+		  text-decoration: none;
+		  font-size: 15px;
+		  width: 100%;
+		  display: block;
+		  /*font-weight: bold;*/
+		  /*background-color: black ; /* Green */
+		}
+		.sub_page{
+			width: 100%;
+			/*margin:10px;*/
+		}
+		.side_nav button:hover {
+		  background-color: #4bab4e ;
+		  color: white;
+		}
+		.active_page{
+			color: white;
+			/*color: black;*/
+			/*padding: 10px;*/
+			background-color: #444444;
+		}
+		#button{
+			background-color: #f0f0f0;
+			border: none;
+			padding: 5px 15px 5px 10px;
+			outline: none;
+			margin-left: 5px;
+			margin-right: 5px;
+			width: 80px;
+			/*margin-right: 15px;*/
+		}
+		#button:hover{
+			background-color: #53b857;
+			color:white;
+		}
+		button {
+			background-color: #f2f2f2;
+			border: none;
+			padding: 5px 15px 5px 10px;
+			outline: none;
+			/*margin-right: 15px;*/
+		}
+
+		#search_page{
+			margin-bottom: 30px;
+			width: 100%;
+			border-radius: 4px;
+			margin-bottom: 20px;
+			height: 150px;
+			/*text-align: center;*/
+		}
+		
+		.news_page{
+			width: 100%;
+			font-size: 15px;
+			/*margin-left: 10%;*/
+			/*margin-right:10%;*/
+			/*margin-top: 40px;*/
+			/*clear: both;*/
+		}
+		button:hover {
+			background-color: #53b857;
+			/*color: black;*/
+			color:white;
+		}
+		.news_content{
+			margin-top: 40px;
+			margin-right: 25%;
+			margin-left: 28%;
+			width: 60%;
+			min-width: 650px;
+			height: auto;
+			/*clear: both;*/
+		}
+		.top_headline{
+			width: 80%;
+		}
+		.top_headline a{
+			text-decoration: none;
+			color: black;
+		}
+		.top_headline *{
+			box-sizing: border-box;;
+		}
+		.news_articles{
+			width: 90%;
+			border: 0.8px solid #b8c2bd;
+			height: auto;
+			border-radius: 5px;
+			padding-top: 10px;
+			margin-left: 5%;
+			padding-bottom: 10px;
+			display: inline-block;
+			margin-bottom: 15px;
+			background-color: #f2f2f2;
+		}
+		.news_articles:hover{
+			box-shadow: 0 0 12px #9c9a9a;
+			cursor: pointer;
+		}
+		.side_nav button:active:focus{
+			outline: none;
+		}
+		.news_articles_expanded{
+			width: 90%;
+			border: 0.8px solid #b8c2bd;
+			height: auto;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			margin-bottom: 15px;
+			background-color: #f2f2f2;
+			border-radius: 8px;
+			margin-left: 5%;
+			overflow: auto;
+		}
+		.news_articles_expanded:hover{
+			box-shadow: 0 0 12px #9c9a9a;
+		}
+		input{
+			width: 130px
+		}
+		select{
+			width: 150px;
+		}
+		.article_image{
+			display: inline;
+			padding-left: :8px;
+			width: 25%;
+			margin-top: 0 auto;
+			margin-left: 10px;
+		}
+		.article_image img{
+			object-fit: cover;
+			width:75px;
+			height:75px;
+		}
+		.article_description{
+			float: right;
+			padding:8px;
+			width: 80%;
+			margin-right: 3.5%;
+			padding-top: 4px;
+		}
+		.input_data{
+			background-color: #f2f2f2;
+			font-size: 14px;
+			text-align: center;
+			margin-bottom: 30px;
+			border-radius: 4px;
+			margin:0 auto;
+			width: 95%;
+			padding-top: 30px;
+			padding-bottom: 30px;
+		}
+		.display_news{
+			width: 100%;
+			margin-left: 12px;
+		}
+		#cnn{
+			margin-bottom: 10px;
+			text-align: center;
+			display: inline-block;
+		}
+		#fox{
+			margin-top: 0;
+			text-align: center;
+			display: inline-block;
+		}
+		#cnn p{
+			margin 0 auto;
+		}
+		#fox p{
+			margin 0 auto;
+		}
+		hr{
+			margin-bottom: 6px;
+			margin-top: 6px;
+			border: 1px dotted;
+		}
+		.top_carousel_window{
+			width:275px;
+		}
+		.carousel {
+		  position: relative;
+		  margin: auto;
+		  height: 270px;
+		  float: left;
+		  width: 55%;
+		}
+		.carousel *{
+			box-sizing: border-box;
+		}
+		.carousel img{
+			height: 270px;
+			width: 100%;
+			vertical-align:middle;
+		}
+		.thumb_article{
+			width: 23.5%;
+			float: left;
+			background-color: #f2f2f2;
+			border: 0.6px solid #a7a5a8;
+			margin-right: 7px;
+			font-size: 12px;
+			height: 360px;
+			color: black;
+			overflow: hidden;
+			border-radius: 4px;
+			box-shadow: 1px 1px #adaaaa;
+		}
+		.thumb_article img{
+			height:120px;
+			border-radius: 3px;
+		}
+		.carousel_text {
+		  color: white;
+		  font-size: 14px;
+		  position: absolute;
+		  bottom: 0px;
+		  width: 100%;
+		  text-align: center;
+		  background-color: rgba(0,0,0,0.4);
+		  /*height: 50%;*/
+		}
+		.mySlides{
+			display: none;
+		}
+		/* Fading animation */
+		.fade {
+		  -webkit-animation-name: fade;
+		  -webkit-animation-duration: 1.5s;
+		  /*-webkit-animation-duration: 2s;*/
+		  animation-name: fade;
+		  /*animation-duration: 2s;*/
+		  animation-duration: 1.5s;
+		}
+		@-webkit-keyframes fade {
+			/*from {opacity: .5} */
+		  from {opacity: .4} 
+		  /*to {opacity: 0.8}*/
+		  to {opacity: 1}
+		}
+		#wordcloud{
+			height: 270px;
+			margin-left: 10px;
+			background-color: #f2f2f2;
+			display: inline-block;
+			width: 320px;
+		}
+		#wordcloud img{
+			width: 340px;
+			height: 100%;
+		}
+		
+		@keyframes fade {
+		  from {opacity: .4} 
+		  to {opacity: 1}
+		}
+		
+		label{
+			margin-right: 15px;
+			margin-left: 15px;
+			font-size: 16px;
+		}
+		@media only screen and (max-width: 300px) {
+			/*.text {font-size: 15px}*/
+		  .text {font-size: 11px}
+		}
+		
+	</style>
+</head>
+
+<body onload="show_news()" style="font-family:'Times New Roman', Times, serif;">
+	<div class="news_page">
+		<div class="side_nav">
+		  <!-- <div id="sub-side-nav"> -->
+		  <button id="google_news" onclick="show_news()">Google News</button>
+		  <button id="search_news" onclick="show_form()">Search</button>
+		  <!-- </div> -->
+		</div>
+		<div class="news_content">
+			<!-- <div id="top-part"></div> -->
+			<div id="top_headline">
+				<div class="top_carousel_wordcloud">
+					<div class="carousel" id="carousel"></div>
+					<div class="wordcloud" id="wordcloud"></div>
+				</div>
+				<br>
+				<div id="cnn"></div>
+				<br>
+				<div id="fox"></div>
+			</div>
+			<div class="sub_page">
+				<div id="search_page">
+					<form class="input_data" id="input_data" name="input_data" style="margin-bottom: 25px;" onsubmit ="checkDateRange(event)">
+						<!-- <div id="first-line"> -->
+						<label for="search_keyword">Keyword<text style="color:red">*</text></label> 
+						<input type="text" name="search_keyword" id="search_keyword" required>
+						<label for="start_date">From<text style="color:red">*</text></label> 
+						<input type="date" name="start_date" id="start_date" required>
+						<label for="end_date">To<text style="color:red">*</text></label> 
+						<input type="date" name="end_date" id="end_date" required>
+						<!-- </div> -->
+						<br><br>
+						<!-- <div id="second-line"> -->
+						<label for="news_category">Category</label>
+						<select name="news_category" id="news_category" onchange="filter_sources(this.value)">
+							<option value="all">all</option>
+							<option value="business">business</option>
+							<option value="entertainment">entertainment</option>
+							<option value="general">general</option>
+							<option value="science">science</option>
+							<option value="sports">sports</option>
+							<option value="technology">technology</option>
+						</select>
+						<label for="news_source">Source</label>
+						<select name="news_source" id="news_source">
+							<option value="all">all</option>
+						</select>
+						<!-- </div> -->
+						<br><br>
+						<!-- <div id="third-line"> -->
+						<input id ="button" type="Submit" value="Submit">
+						<input id="button" type="button" value="Clear" onclick="clear_page()">
+						<!-- </div> -->
+					</form>
+					<div id="display_news" style="width: 100%">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		function loadJSON (url) {
+    		if(!url){
+    			alert("Input field is empty");
+    			return null;
+    		}
+			 var xmlhttp=new XMLHttpRequest();
+			 xmlhttp.open("GET",url,false); //open, send, responseText are
+			 try{
+			 	xmlhttp.send(); //properties of XMLHTTPRequest
+			 }
+			 catch(Exception){
+			 	alert("File not found");
+			 	return null;
+			 }
+			 if(xmlhttp.status == 404){
+				alert("File Not Found");
+				return null;
+			 }
+			 var jsonDoc=xmlhttp.responseText;
+			 if(!jsonDoc){
+				return null;
+			 }
+			 return jsonDoc;
+	    }
+	    xmlhttp = new XMLHttpRequest();
+
+	    function checkDateRange(event){
+	    	event.preventDefault();
+	    	start_date = document.getElementById("start_date").value;
+	    	end_date = document.getElementById("end_date").value;
+	    	news_category = document.getElementById("news_category").value;
+	    	search_keyword =  document.getElementById("search_keyword").value;
+	    	news_source = document.getElementById("news_source").value;
+	    	if(!search_keyword || search_keyword.length == 0){
+	    		//alert("Enter a keyword");
+	    		document.getElementById("search_keyword").focus();
+	    		return false;
+	    	}
+	    	if(!start_date || start_date.length == 0){
+	    		//alert("Enter start date");
+	    		document.getElementById("start_date").focus();
+	    		return false;
+	    	}
+	    	if(!end_date || end_date.length == 0){
+	    		alert("Enter end date");
+	    		document.getElementById("end_date").focus();
+	    		return false;
+	    	}
+	    	if(start_date > end_date){
+	    		alert("Incorrect time");
+	    		document.getElementById("start_date").focus();
+	    		return false;
+	    	}
+	    	url = "news_content?news_source="+news_source+"&search_keyword="+search_keyword+"&news_category="+news_category+"&start_date="+start_date+"&end_date="+end_date;
+	    	xmlhttp.open('GET', url, false);
+	    	xmlhttp.send();
+	    	news_content = xmlhttp.responseText;
+	    	var news_content = JSON.parse(xmlhttp.responseText);
+	    	//console.log(news_content);
+	    	if(news_content.status == "error"){
+	    		var err = news_content.err_msg.toString();
+	    		if(err.substring(0,33)== "You are trying to request results")
+	    		{
+	    			alert(news_content.err_msg);
+	    		}
+	    		return;
+	    	}
+	    	if(news_content.totalResults==0){
+				no_content="<div style='text-align:center'>No Content Found</div>"
+				display_news.innerHTML=no_content;
+				return;
+			}
+	    	news_content = news_content.articles;
+			shown_news = document.getElementById("display_news");
+	    	news_content = filter_news(news_content, 14);
+			shown_news.innerHTML ="";
+			
+	    	for(var i = 0; i < 5; i ++){
+	    		news_articles = "";
+	    		news_articles = "<div class='news_articles' onclick='expand_news(this)'><div class='article_image'><img src='"+news_content[i].urlToImage+"'></div><div class='article_description'><b style='font-size:17px'>"+news_content[i].title+"</b><br><p style='margin-top:4px;'>";
+	    		description = news_content[i].description
+	    		if(description.length < 72){
+	    			description = description
+	    		}
+	    		else{
+		    		description = description.substring(0,75);
+		    		counter = 74;
+		    		while(description.charAt(counter)!=" ")
+		    			counter--;
+		    		description=description.substring(0,counter);
+		    		description+="...";
+		    	}
+	    		news_articles+=description;
+	    		news_articles+="</p></div></div>";
+	    		shown_news.innerHTML+= news_articles;
+
+	    		var expanded_card = ""
+	    		expanded_card+="<div class='news_articles_expanded' id='"+i+"'style='display:none' ><div class='article_image'><img src='"+news_content[i].urlToImage+"'></div><div class='article_description'><div onclick='minimize_news(\""+i+"\")' style='float:right;cursor:pointer'>&#10005</div><b style='font-size:17px'>"+news_content[i].title+"</b><br><p style='margin-top:4px;'><b>Author:</b>"+news_content[i].author+"<br><b>Source:</b>"+news_content[i].source.name+"<br><b>Date: </b>";
+	    		var date= new Date(news_content[i].publishedAt);
+	    		var month = date.getMonth();
+	    		if(month < 10){
+	    			month = "0" + month;
+	    		}
+	    		var day = date.getDate();
+	    		if(day < 10){
+	    			day = "0" + day;
+	    		}
+	    		var year = date.getFullYear();
+	    		expanded_card+=month+"/"+day+"/"+year+"<br>";
+	    		expanded_card+=news_content[i].description+"<br><a href='"+news_content[i].url+"' target='_blank'>See Original Post</a></p></div></div>";
+				 shown_news.innerHTML+=expanded_card;
+	    	}
+
+			show_more_button="";
+			show_more_button+="<button style='margin: 0 auto; margin-left:45%' id='show_more' onclick='show_more_card(\"show_more\")'>Show More</button>";
+			
+			hidden_news = "<div class='expanded_news' style='display:none' id='expanded_news'>";
+			//console.log(news_content.length);
+	    	for(var i = 5; i< news_content.length;i++){
+	    		news_articles = "";
+	    		news_articles+= "<div class='news_articles' onclick='expand_news(this)'><div class='article_image'><img src='"+news_content[i].urlToImage+"'></div><div class='article_description'><b>"+news_content[i].title+"</b><br>";
+	    		description = news_content[i].description
+	    		if(description.length < 72){
+	    			description = description
+	    		}
+	    		else{
+		    		description = description.substring(0,75);
+		    		counter = 74;
+		    		while(description.charAt(counter)!=" ")
+		    			counter--;
+		    		description=description.substring(0,counter);
+		    		description+="...";
+		    	}
+	    		news_articles+=description;
+	    		news_articles+="</div></div>";
+	    		hidden_news+= news_articles;
+	    		var expanded_card = "";
+	    		expanded_card+="<div class='news_articles_expanded' id='"+i+"'style='display:none' ><div class='article_image'><img src='"+news_content[i].urlToImage+"'></div><div class='article_description'><div onclick='minimize_news(\""+i+"\")' style='float:right; cursor:pointer'>&#10005</div><b>"+news_content[i].title+"</b><br><b>Author:</b>"+news_content[i].author+"<br><b>Source:</b>"+news_content[i].source.name+"<br><b>Date: </b>";
+	    		var date= new Date(news_content[i].publishedAt);
+	    		var month = date.getMonth();
+	    		if(month < 10){
+	    			month = "0" + month;
+	    		}
+	    		var day = date.getDate();
+	    		if(day < 10){
+	    			day = "0" + day;
+	    		}
+	    		var year = date.getFullYear();
+	    		expanded_card+=month+"/"+day+"/"+year+"<br>";
+	    		expanded_card+=news_content[i].description+"<br><a href='"+news_content[i].url+"' target='_blank'>See Original Post</a></div></div>";
+	    		hidden_news+=expanded_card;
+	    	}
+	    	hidden_news+="<button style='margin: 0 auto; margin-left:45%' onclick=show_less_card('expanded_news')>Show Less</button></div>"
+	    	//console.log(hidden_news)
+	    	show_more_button+=hidden_news;
+	    	shown_news.innerHTML+=show_more_button;
+	    	//console.log(hidden_news.innerHTML);
+	    }
+	    function show_more_card(element){
+	    	document.getElementById(element).style.display="none";
+	    	document.getElementById(element).nextElementSibling.style.display="block";
+	    }
+	    function show_less_card(element){
+	    	document.getElementById(element).style.display="none";
+	    	document.getElementById(element).previousElementSibling.style.display="block";
+	    }
+	    function expand_news(element){
+	    	element.style.display="none";
+	    	element.nextElementSibling.style.display="block";
+	    }
+	    function minimize_news(element){
+	    	document.getElementById(element).style.display="none";
+	    	document.getElementById(element).previousElementSibling.style.display="block";
+	    }
+	    function insert_option(source_array){
+	    	var select = document.getElementById("news_source");
+	    	// console.log(select);
+	    	select.innerHTML = "";
+	    	// console.log(select);
+	    	var option = document.createElement("option");
+	    	// console.log(option);
+	    	option.value = "all";
+	    	option.innerHTML = "all";
+	    	// console.log(option);
+	    	select.appendChild(option);
+	    	if(source_array.length < 10)
+	    		len=source_array.length;
+	    	else
+	    		len = 10;
+	    	for(var i = 0; i < len; i ++){
+	    		var option = document.createElement("option");
+	    		option.value = source_array[i].id;
+	    		option.innerHTML = source_array[i].name;
+	    		select.appendChild(option);
+	    	}
+	    }
+	    function filter_sources(value){
+	    	news_source = document.getElementById("news_source");
+	    	if(value == "all"){
+	    		xmlhttp.open("GET", "/sources", false);
+		    	xmlhttp.send();
+		    	source_arr = JSON.parse(xmlhttp.responseText);
+		    	insert_option(source_arr.sources);
+		    	return;
+	    	}
+	    	url = "filter_sources?news_category="+value;
+	    	xmlhttp.open("GET", url, false)
+	    	xmlhttp.send();
+	    	filtered_sources = JSON.parse(xmlhttp.responseText);
+	    	insert_option(filtered_sources.sources);
+	    }
+	    function filter_news(news, number_of_articles){
+	    	var filtered_news = [];
+	    	var count = 0;
+	    	for(var i = 0; i < news.length; i ++){
+	    		if(news[i].source == null)
+	    			continue;
+	    		if(news[i].author == null || news[i].author.length == 0 || news[i].author == "null")
+	    			continue;
+	    		if(news[i].title == null || news[i].title.length == 0 || news[i].title == "null")
+	    			continue;
+	    		if(news[i].description == null || news[i].description.length == 0 || news[i].description == "null")
+	    			continue;
+	    		if(news[i].url == null || news[i].url.length == 0 || news[i].url== "null")
+	    			continue;
+	    		if(news[i].urlToImage == null || news[i].urlToImage.length == 0 || news[i].urlToImage == "null")
+	    			continue;
+	    		if(news[i].publishedAt == null || news[i].publishedAt.length == 0 || news[i].publishedAt == "null")
+	    			continue;
+	    		if(news[i].content == null || news[i].content.length == 0 || news[i].content == "null")
+	    			continue;
+	    		if(news[i].source.name == null || news[i].source.name.length == 0 || news[i].source.name =="null")
+	    			continue;
+	    		count++;
+	    		filtered_news.push(news[i]);
+	    		if(count > number_of_articles)
+	    			break;
+	    	}
+	    	return filtered_news;
+	    }
+	    function show_news(){
+	    	document.getElementById("search_page").style.display = "none";
+	    	/*document.getElementById("google_news").style.backgroundColor = "black"
+	    	document.getElementById("google_news").style.color = "white"
+	    	document.getElementById("search_news").style.backgroundColor = "white"
+	    	document.getElementById("search_news").style.color = "black"*/
+	    	document.getElementById("top_headline").style.display = "block";
+	    	document.getElementById("google_news").className = "active_page"
+	    	document.getElementById("search_news").className = ""
+	    	url1 = "top_headlines_sources?source=";
+	    	xmlhttp.open("GET",url1,false);
+	    	xmlhttp.send();
+	    	top_news = JSON.parse(xmlhttp.responseText);
+	    	top_news_filtered = filter_news(top_news.articles, 4);
+	    	//console.log(top_news_filtered);
+	    	var carousel = document.getElementById("carousel");
+	    	carousel.innerHTML="";
+	    	carousel_content=""
+	    	for(var i = 0; i < top_news_filtered.length; i ++){
+	    		carousel_content+="<a href="+top_news_filtered[i].url+" target=_blank><div class='mySlides fade'><img src="+top_news_filtered[i].urlToImage+"><div class='carousel_text'><b style='font-size:19px'>"+top_news_filtered[i].title+"</b><br><p>"+top_news_filtered[i].description+"</p></div></div></a>";
+	    	}
+	    	carousel.innerHTML=carousel_content;
+	    	showSlides();
+	    	max = 28;
+			min = 12;
+	 		url = "/top_frequent_words"
+	 		//console.log(url);
+			xmlhttp.open("GET", url, false);
+			xmlhttp.send();
+			// console.log(xmlhttp.responseText);
+			myWords=JSON.parse(xmlhttp.responseText);
+			myWords = myWords.words;
+			document.getElementById("wordcloud").innerHTML = "";
+
+			start_size = myWords[0].size;
+			end_size = myWords[myWords.length-1].size;
+			
+			for(var i = 0; i < myWords.length;i ++){
+				myWords[i].size = (((myWords[i].size - end_size)/(start_size - end_size))*(max-min))+min;
+			}
+
+	    	var margin = {top: 0, right: 0, bottom: 0, left: 0},
+			width = 318 - margin.left - margin.right,
+			height = 270 - margin.top - margin.bottom;
+
+			var svg = d3.select("#wordcloud").append("svg")
+			.attr("width", width + margin.left + margin.right)
+			.attr("height", height + margin.top + margin.bottom)
+		  	.append("g")
+			.attr("transform",
+				  "translate(" + margin.left + "," + margin.top + ")");
+
+			var layout = d3.layout.cloud()
+			  .size([width, height])
+			  .words(myWords.map(function(d) { return {text: d.word, size:d.size}; }))
+			  .padding(5)        //space between words
+			  .rotate(function() { return ~~(Math.random() * 2) * 90; })
+			  .fontSize(function(d) { return d.size; })      // font size of words
+			  .on("end", draw);
+			layout.start();
+
+			function draw(words) {
+			  svg
+				.append("g")
+				  .attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
+				  .selectAll("text")
+					.data(words)
+				  .enter().append("text")
+					.style("font-size", function(d) { return d.size*1.1 + "px"; })
+					.style("fill", "black")
+					.attr("text-anchor", "middle")
+					.style("font-family", "Impact")
+					.attr("transform", function(d) {
+					  return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+					})
+					.text(function(d) { return d.text; });
+			}
+
+	    	url2 = "top_headlines_sources?source=cnn";
+	    	xmlhttp.open("GET",url2,false);
+	    	xmlhttp.send();
+	    	// console.log(xmlhttp.responseText);
+	    	cnn_content = JSON.parse(xmlhttp.responseText);
+	    	cnn_articles = cnn_content.articles;
+	    	// console.log(cnn_articles);
+	    	cnn_display = filter_news(cnn_articles, 3);
+	    	// console.log(cnn_display);
+	    	cnn_news = document.getElementById("cnn");
+	    	// console.log(cnn_news);
+	    	var thumbnail1 = "<div class='news_row'><p style='margin-bottom:0px'><b style='font-size:20px'>CNN</b></p><hr></div>";
+	    	for(var i = 0; i < cnn_display.length; i ++){
+	    		if(i == 0){
+	    			thumbnail1+="<a href="+cnn_display[i].url+" target=_blank><div class='thumb_article' style='margin-left:8px'><img src="+cnn_display[i].urlToImage+" width=100% height=100px><div><h3>"+cnn_display[i].title+"</h3><p>"+cnn_display[i].description+"</p></div></div></a>"
+	    		}
+	    		else{
+	    			thumbnail1+="<a href="+cnn_display[i].url+" target=_blank><div class='thumb_article'><img src="+cnn_display[i].urlToImage+" width=100% height=100px><div><h3>"+cnn_display[i].title+"</h3><p>"+cnn_display[i].description+"</p></div></div></a>"
+	    		}
+
+	    	}
+	    	cnn_news.innerHTML=thumbnail1;
+
+	    	url3 = "top_headlines_sources?source=fox-news";
+	    	xmlhttp.open("GET",url3,false);
+	    	xmlhttp.send();
+	    	// console.log(xmlhttp.responseText);
+	    	fox_content = JSON.parse(xmlhttp.responseText);
+	    	fox_articles = fox_content.articles;
+	    	// console.log(fox_articles);
+	    	fox_display = filter_news(fox_articles, 3);
+	    	// console.log(fox_display);
+	    	fox_news = document.getElementById("fox");
+	    	// console.log(fox_news);
+	    	var thumbnail2 = "<div class='news_row'><p style='margin-bottom:0px'><b style='font-size:20px'>Fox News</b></p><hr></div>";
+	    	for(var i = 0; i < fox_display.length; i ++){
+	    		if(i == 0){
+	    			thumbnail2+="<a href="+fox_display[i].url+" target=_blank><div class='thumb_article' style='margin-left:8px'><img src="+fox_display[i].urlToImage+" width=100% height=100px><div><h3>"+fox_display[i].title+"</h3><p>"+fox_display[i].description+"</p></div></div></a>"
+	    		}
+	    		else{
+	    			thumbnail2+="<a href="+fox_display[i].url+" target=_blank><div class='thumb_article'><img src="+fox_display[i].urlToImage+" width=100% height=100px><div><h3>"+fox_display[i].title+"</h3><p>"+fox_display[i].description+"</p></div></div></a>"
+	    		}
+	    	}
+	    	fox_news.innerHTML=thumbnail2;
+	    }
+	    var slideIndex = 0;
+	    function showSlides() {
+		  var i;
+		  var slides = document.getElementsByClassName("mySlides");
+		  for (i = 0; i < slides.length; i++) {
+		    slides[i].style.display = "none";  
+		  }
+		  slideIndex++;
+		  if (slideIndex > slides.length) {slideIndex = 1}
+		  slides[slideIndex-1].style.display = "block";  
+		  setTimeout(showSlides, 3500); // Change image every 4 seconds
+		}
+
+		function get_date(dte){
+			current_date = dte.getDate();
+			current_date = current_date < 10 ? '0' + current_date : current_date;
+			current_month = dte.getMonth() + 1;
+			current_month = current_month < 10 ? '0' + current_month : current_month;
+			current_year = dte.getFullYear();
+	
+			current_datetime = current_year + '-' + current_month + '-' + current_date;
+			return current_datetime;
+		}
+	    function show_form(){
+	    	document.getElementById("search_page").style.display = "block";
+	    	/*document.getElementById("google_news").style.backgroundColor = "white"
+	    	document.getElementById("google_news").style.color = "black"
+	    	document.getElementById("search_news").style.backgroundColor = "black"
+	    	document.getElementById("search_news").style.color = "white"*/
+	    	document.getElementById("top_headline").style.display = "none";
+	    	document.getElementById("search_news").className = "active_page";
+	    	document.getElementById("google_news").className = "";
+	    	var past_date = new Date();
+	    	past_date.setDate(past_date.getDate() - 7);
+	    	var current_date = new Date();
+	    	document.input_data.start_date.value =get_date(past_date);
+	    	document.input_data.end_date.value = get_date(current_date);
+	    	url = "/sources";
+	    	xmlhttp.open("GET", url, false);
+	    	xmlhttp.send();
+	    	source_arr = JSON.parse(xmlhttp.responseText);
+	    	//console.log(source_arr);
+	    	insert_option(source_arr.sources);
+	    }
+
+	    function clear_page(){
+	    	document.getElementById("display_news").innerHTML="";
+	    	document.getElementById("input_data").reset();
+	    	var past_date = new Date();
+	    	past_date.setDate(past_date.getDate() - 7);
+	    	var current_date = new Date();
+	    	document.input_data.start_date.value =get_date(past_date);
+	    	document.input_data.end_date.value = get_date(current_date);
+	    	xmlhttp.open("GET", "/sources", false);
+	    	xmlhttp.send();
+	    	source_arr = JSON.parse(xmlhttp.responseText);
+	    	insert_option(source_arr.sources);
+	    }
+      
+	</script>
+	<!-- Load d3.js -->
+	<script src="https://d3js.org/d3.v4.js"></script>
+
+	<!-- Load d3-cloud -->
+	<script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
+</body>
+</html>
