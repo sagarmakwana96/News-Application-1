@@ -1,1 +1,2 @@
-Link to the newsapp : http://python-sagarjay.us-east-1.elasticbeanstalk.com/
+-  The application had two main pages. Home page fetched the news using the News API and displayed top 5 news from CNN and Fox News. Search Page provides the functionality to search for news in particular time duration and also allows the users to select the news category and source. 
+- Front end of this project was developed using HTML, CSS and JavaScript. Backend was developed using Python Flask.
